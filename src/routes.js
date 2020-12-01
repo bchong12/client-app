@@ -13,6 +13,10 @@ import MeetingEntries from "./Pages/MeetingEntries/MeetingEntries.pages";
 import MeetingEntry from "./Pages/MeetingEntry/MeetingEntry.pages";
 import MeetingUpdate from "./Pages/MeetingUpdate/MeetingUpdate.pages";
 import SureDelete from "./Pages/SureDelete/SureDelete.pages";
+import EditAgent from './Pages/EditAgent/EditAgent.pages'
+import EditClient from './Pages/EditClient/EditClient.pages'
+import ForgotPassword from './Pages/ForgotPassword/ForgotPassword.pages'
+import ResetPassword from './Pages/ResetPassword/ResetPassword'
 
 export default (
   <BrowserRouter>
@@ -68,6 +72,22 @@ export default (
       {/* Are you sure you want to delete? Will have a redux option everytime we mount we either mount application or insurance and every detail thats needed like meeting id or insuranceId */}
       <Route exact path="/client/:id/sureDelete">
         <SureDelete />
+      </Route>
+      {/* Forgot Password */}
+      <Route exact path="/forgotPassword">
+        <ForgotPassword />
+      </Route>
+      {/* Reset Password */}
+      <Route exact path="/resetPassword">
+        <ResetPassword />
+      </Route>
+      {/* Edit Agent Form */}
+      <Route exact path="/dashboard/edit">
+        <EditAgent />
+      </Route>
+      {/* Edit Client Form */}
+      <Route>
+        <EditClient />
       </Route>
     </Switch>
   </BrowserRouter>

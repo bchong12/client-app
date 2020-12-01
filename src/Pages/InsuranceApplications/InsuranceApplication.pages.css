@@ -1,0 +1,10 @@
+.insurance-application-entries {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 83vh;
+}
+.iae-search {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}

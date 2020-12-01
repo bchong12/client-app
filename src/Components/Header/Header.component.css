@@ -1,0 +1,44 @@
+@media screen and (max-width: 315px) {
+  .header {
+    display: none;
+  }
+}
+@media screen and (min-width: 316px) and (max-width: 1000000px) {
+  .header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: rosybrown;
+    padding: 10px 0px;
+    color: white;
+    width: 100vw;
+    margin-bottom: 0px;
+  }
+
+  .links-header-div {
+    display: flex;
+    align-items: center;
+  }
+
+  .header-title {
+    font-size: 18px;
+    margin-left: 25px;
+  }
+
+  .links-header {
+    margin-left: 15px;
+    margin-right: 20px;
+  }
+
+  .links-header:hover {
+    color: rgb(231, 231, 231);
+  }
+
+  .link-logout {
+    margin-left: -40px;
+  }
+
+  .link-logout:hover {
+    cursor: pointer;
+  }
+}

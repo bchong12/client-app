@@ -3,7 +3,7 @@ import Routes from "./routes";
 import "./App.css";
 
 function App() {
-  return <>{Routes}</>;
+  return <div className="App">{Routes}</div>;
 }
 
 export default App;

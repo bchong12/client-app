@@ -1,11 +1,26 @@
 import React from "react";
+import Header from '../../Components/Header/Header.component'
+import { withRouter } from 'react-router-dom'
 import "./ClientEntry.pages.css";
 
-const ClientEntry = () => {
+const ClientEntry = (props) => {
   return (
-    <div className="client-entry">
-      <p>Client Entry</p>
-    </div>
+    <>
+      <Header left="agent name" r="" middle="Dashboard" logout="Logout" linkMiddle="/dashboard" />
+      <div className="client-entry">
+        <div className="input-box">
+          <p className="login-title">Client Form</p>
+          <input placeholder="Name" className="auth-input" />
+          <input placeholder="Email" className="auth-input" />
+          <input placeholder="Phone Number" className="auth-input" />
+          <button onClick={() => {
+            //axios req
+            props.history.push('/dashboard')
+          }} className="login-button">Submit</button>
+
+        </div>
+      </div>
+    </>
   );
 };
-export default ClientEntry;
+export default withRouter(ClientEntry);

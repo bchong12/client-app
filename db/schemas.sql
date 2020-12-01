@@ -3,7 +3,7 @@ agent_id serial primary key,
 email varchar(250),
 name text,
 password text
-)
+);
 
 create table if not exists client (
     client_id serial primary key,
@@ -11,14 +11,14 @@ create table if not exists client (
     phone_number integer,
     email text,
     agent_id int references agent(agent_id)
-)
+);
 
 create table if not exists meeting_entry (
     meeting_id serial primary key,
     client_id int references client(client_id),
     date text,
     notes text
-)
+);
 
 create table if not exists application (
     application_id serial primary key,
@@ -51,7 +51,7 @@ create table if not exists application (
     replacement text,
     purpose_of_insurance text,
     ltc text,
-    living benefits text,
+    living_benefits text,
     lifetime_income_rider text,
     other_rider text,
     pb_name text,
@@ -102,9 +102,10 @@ create table if not exists application (
     owner_name text,
     bank_dob text,
     bank_ssn integer,
-    bank_address text,
+    bank_address_2 text,
     bank_tel integer,
     exam_scheduled_date text,
     examiner text,
     note text
-)
+);
+
