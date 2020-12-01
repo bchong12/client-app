@@ -5,16 +5,22 @@ module.exports = {
         const db = req.app.get('db')
         const { email, password } = req.body
 
-        const result = db.auth.get_agent({ email });
+        const result = await db.auth.get_agent({ email })
 
         if (!result[0]) {
-            return res.status(400).send("Email not registered.")
+            return res.status(400).send("Email does not exist")
         }
 
         const isAuthenticated = await bcrypt.compareSync(
             password,
             result[0].password
         )
+
+        if (!isAuthenticated) {
+            return res.status(400).send("Email and Password do not match")
+        }
+
+        delete result[0].password
 
         req.session.user = result[0]
 
@@ -32,7 +38,7 @@ module.exports = {
         const foundUser = await db.auth.get_agent({ email })
 
         if (foundUser[0]) {
-            return res.status(400).send("Username does not exist")
+            return res.status(400).send("Email already exists")
         }
 
         let salt = bcrypt.genSaltSync(10)
@@ -42,5 +48,14 @@ module.exports = {
 
         req.session.user = newUser[0]
         res.status(201).send(req.session.user)
+    },
+
+    logout: (req, res) => {
+        req.session.destroy()
+
+        res.sendStatus(200)
+    },
+    me: (req, res) => {
+        res.send(req.session.user)
     }
 }
