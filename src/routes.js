@@ -86,7 +86,7 @@ export default (
         <EditAgent />
       </Route>
       {/* Edit Client Form */}
-      <Route>
+      <Route exact path="/client/:id/edit">
         <EditClient />
       </Route>
     </Switch>

@@ -1,19 +1,25 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Link, withRouter } from 'react-router-dom'
 import axios from 'axios'
+import { getUser } from '../../Redux/reducers/authReducer'
+import { connect } from 'react-redux'
 import './Header.component.css'
 
 const Header = (props) => {
+    const [name, setName] = useState('')
     useEffect(() => {
         axios.get('/auth/me').then((res) => {
             if (res.data === "") {
                 props.history.push('/')
+            } else {
+                setName(res.data.name.toUpperCase())
+                props.getUser(res.data)
             }
         })
-    })
+    }, [])
     return (
         <div className="header">
-            <p className="header-title">{props.left}</p>
+            <p className="header-title">{name}</p>
             <div className="links-header-div">
                 <Link style={{ textDecorationLine: 'none', color: "white" }} to={props.linkR}>
                     <p className="links-header">{props.r}</p>
@@ -36,4 +42,4 @@ const Header = (props) => {
     )
 }
 
-export default withRouter(Header)
+export default connect(null, { getUser })(withRouter(Header))

@@ -9,7 +9,7 @@
 @media screen and (min-width: 316px) and (max-width: 699px) {
   .input-box {
     height: 300px;
-    padding: 10px 30px 140px;
+    padding: 10px 30px 100px;
     width: 200px;
     display: flex;
   }
@@ -41,7 +41,7 @@
 @media screen and (min-width: 700px) {
   .input-box {
     height: 300px;
-    padding: 10px 120px 180px;
+    padding: 10px 120px 120px;
     display: flex;
   }
 

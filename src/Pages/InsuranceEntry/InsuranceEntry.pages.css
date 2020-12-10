@@ -575,3 +575,12 @@
 .insurance-entry {
   padding: 40px;
 }
+
+.align-center {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.margins-right {
+  margin-right: 10px;
+}

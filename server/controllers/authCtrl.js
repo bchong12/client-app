@@ -38,7 +38,7 @@ module.exports = {
         const foundUser = await db.auth.get_agent({ email })
 
         if (foundUser[0]) {
-            return res.status(400).send("Email already exists")
+            return res.status(400).send("Email is already registered")
         }
 
         let salt = bcrypt.genSaltSync(10)
@@ -57,5 +57,23 @@ module.exports = {
     },
     me: (req, res) => {
         res.send(req.session.user)
+    },
+    updateAgent: async (req, res) => {
+        const db = req.app.get('db')
+        const { name, email, confirmEmail, agentId } = req.body
+
+        if (email !== confirmEmail) {
+            const foundUser = await db.auth.get_agent({ email })
+
+            if (foundUser[0]) {
+                return res.status(400).send("Email is already registered")
+            }
+        }
+
+        db.auth.update_agent({ name, email, agentId })
+
+        req.session.destroy()
+
+        res.sendStatus(200)
     }
 }

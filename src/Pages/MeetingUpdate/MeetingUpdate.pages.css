@@ -1,0 +1,33 @@
+@media screen and (max-width: 563px) {
+  .thick {
+    width: 250px;
+  }
+}
+@media screen and (min-width: 563px) and (max-width: 850px) {
+  .thick {
+    padding: 20px 0;
+    width: 400px;
+  }
+}
+@media screen and (min-width: 850px) and (max-width: 1147px) {
+  .thick {
+    padding: 20px 0;
+    width: 600px;
+  }
+}
+@media screen and (min-width: 1147px) and (max-width: 1280px) {
+  .thick {
+    padding: 20px 0;
+    width: 400px;
+  }
+}
+@media screen and (min-width: 1280px) and (max-width: 10000000px) {
+  .thick {
+    padding: 20px 0;
+    width: 300px;
+  }
+}
+
+.margin-right {
+  margin-right: 100px;
+}

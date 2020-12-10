@@ -17,7 +17,8 @@ create table if not exists meeting_entry (
     meeting_id serial primary key,
     client_id int references client(client_id),
     date text,
-    notes text
+    notes text,
+    name text
 );
 
 create table if not exists application (
@@ -44,7 +45,7 @@ create table if not exists application (
     annual_household_income integer,
     net_worth integer,
     product_type name,
-    coverage_amound integer,
+    coverage_amount integer,
     class_rating text,
     planned_premium integer,
     term_years integer,
@@ -71,7 +72,7 @@ create table if not exists application (
     con2_ssn integer,
     con2_relationship text,
     height text,
-    weight integer,
+    weight text,
     tobacco text,
     pb_or_cholesterol text,
     pbc_explain text,
@@ -91,7 +92,7 @@ create table if not exists application (
     sib_cause text,
     driving_history text,
     pcp_name text,
-    pcp_tel integer,
+    pcp_tel text,
     pcp_address text,
     pcp_date_last text,
     pcp_reason text,
@@ -103,9 +104,22 @@ create table if not exists application (
     bank_dob text,
     bank_ssn integer,
     bank_address_2 text,
-    bank_tel integer,
+    bank_tel text,
     exam_scheduled_date text,
     examiner text,
-    note text
+    note text,
+    tobacco_explain text,
+    c1 text,
+    c2 text,
+    fa text,
+    fa2 text,
+    pn text,
+    pn2 text,
+    iy text,
+    iy2 text,
+    sv text,
+    sv2 text,
+    o text,
+    o2 text 
 );
 

@@ -41,7 +41,6 @@ const Login = (props) => {
           })
         }} className="login-button">Submit</button>
         <a href="/register" className="link-form">Need to Register an Account?</a>
-        <a href="/forgotPassword" className="link-form">Forgot your Password?</a>
       </div>
     </div>
   );

@@ -51,6 +51,7 @@
   background-color: rgb(80, 80, 80);
   padding-top: 15px;
   padding-bottom: 5px;
+  width: 130px;
 }
 .client-one:hover {
   cursor: pointer;
