@@ -10,34 +10,34 @@ const applicationCtrl = require('./controllers/applicationCtrl')
 const path = require("path")
 
 //create an instance of express
-const app = express()
+const app = express();
 
-app.use(express.json())
+app.use(express.json());
 
 massive({
     connectionString: CONNECTION_STRING,
     ssl: {
-        rejectUnauthorized: false
-    }
+        rejectUnauthorized: false,
+    },
 }).then((db) => {
     app.set("db", db);
-    console.log("db is connected")
-})
+    console.log("db is connected");
+});
 
 app.use(
     session({
         resave: true,
         saveUninitialized: true,
-        secret: SESSION_SECRET
+        secret: SESSION_SECRET,
     })
-)
+);
 
 //auth endpoints
-app.post('/auth/login', authCtrl.login)
-app.post('/auth/register', authCtrl.register)
-app.post('/auth/logout', authCtrl.logout)
-app.get("/auth/me", authCtrl.me)
-app.put("/agent/update", authCtrl.updateAgent)
+app.post("/auth/login", authCtrl.login);
+app.post("/auth/register", authCtrl.register);
+app.post("/auth/logout", authCtrl.logout);
+app.get("/auth/me", authCtrl.me);
+app.put("/agent/update", authCtrl.updateAgent);
 
 //client endpoints
 app.post('/client', clientCtrl.addClient)
@@ -50,20 +50,20 @@ app.get('/clientsAlphabet/:agent_id', clientCtrl.orderByAlphabet)
 app.get('/clientId/:agent_id', clientCtrl.orderById)
 
 //meeting endpoints
-app.post('/meeting', meetingCtrl.addMeeting)
-app.delete('/meeting', meetingCtrl.deleteMeeting)
-app.put('/meeting', meetingCtrl.updateMeeting)
-app.get('/meeting/:meetingId', meetingCtrl.getMeeting)
-app.get('/meetings/:clientId', meetingCtrl.getMeetings)
-app.post('/meeting/email', meetingCtrl.emailMeeting)
+app.post("/meeting", meetingCtrl.addMeeting);
+app.delete("/meeting", meetingCtrl.deleteMeeting);
+app.put("/meeting", meetingCtrl.updateMeeting);
+app.get("/meeting/:meetingId", meetingCtrl.getMeeting);
+app.get("/meetings/:clientId", meetingCtrl.getMeetings);
+app.post("/meeting/email", meetingCtrl.emailMeeting);
 
 //application endpoints
-app.post('/application', applicationCtrl.addApplication)
-app.delete('/application', applicationCtrl.deleteApplication)
-app.put('/application', applicationCtrl.updateApplication)
-app.get('/application/:applicationId', applicationCtrl.getApplication)
-app.get('/applications/:clientId', applicationCtrl.getApplications)
-app.post('/application/email', applicationCtrl.emailApplication)
+app.post("/application", applicationCtrl.addApplication);
+app.delete("/application", applicationCtrl.deleteApplication);
+app.put("/application", applicationCtrl.updateApplication);
+app.get("/application/:applicationId", applicationCtrl.getApplication);
+app.get("/applications/:clientId", applicationCtrl.getApplications);
+app.post("/application/email", applicationCtrl.emailApplication);
 
 //server side rendering
 app.use(express.static(__dirname + "/../build"));
