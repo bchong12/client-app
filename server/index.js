@@ -7,6 +7,7 @@ const authCtrl = require('./controllers/authCtrl')
 const clientCtrl = require('./controllers/clientCtrl')
 const meetingCtrl = require('./controllers/meetingCtrl')
 const applicationCtrl = require('./controllers/applicationCtrl')
+const path = require("path")
 
 //create an instance of express
 const app = express()
@@ -44,6 +45,9 @@ app.delete('/client', clientCtrl.deleteClient)
 app.put('/client', clientCtrl.updateClient)
 app.get('/client/:clientId', clientCtrl.getClient)
 app.get('/clients/:agentId', clientCtrl.getClients)
+app.get('/clientsAll', clientCtrl.getAllClients)
+app.get('/clientsAlphabet/:agent_id', clientCtrl.orderByAlphabet)
+app.get('/clientId/:agent_id', clientCtrl.orderById)
 
 //meeting endpoints
 app.post('/meeting', meetingCtrl.addMeeting)
@@ -60,5 +64,12 @@ app.put('/application', applicationCtrl.updateApplication)
 app.get('/application/:applicationId', applicationCtrl.getApplication)
 app.get('/applications/:clientId', applicationCtrl.getApplications)
 app.post('/application/email', applicationCtrl.emailApplication)
+
+//server side rendering
+app.use(express.static(__dirname + "/../build"));
+
+app.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname + '/../build/index.html'))
+})
 
 app.listen(SERVER_PORT, console.log(`Server connected on port ${SERVER_PORT}`))

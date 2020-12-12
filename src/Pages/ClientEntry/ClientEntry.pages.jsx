@@ -14,21 +14,17 @@ const ClientEntry = (props) => {
     <>
       <Header left="agent name" r="" middle="Dashboard" logout="Logout" linkMiddle="/dashboard" />
       <div className="client-entry">
-        <div className="input-box">
+        <div className="client-input input-box">
           <p className="login-title">Client Form</p>
           <input placeholder="Name" onChange={(e) => {
             setName(e.target.value)
           }} className="auth-input" />
-          <input placeholder="Email" onChange={(e) => {
-            setEmail(e.target.value)
-          }} className="auth-input" />
-          <input placeholder="Phone Number" onChange={(e) => {
-            setPhoneNumber(e.target.value)
-          }} className="auth-input" />
           <button onClick={() => {
             //axios req
             axios.post('/client', { name, email, phoneNumber, agentId: props.auth.user.agent_id }).then(() => {
-              props.history.push('/dashboard')
+              axios.get('/clientsAll',).then((res) => {
+                props.history.push(`/client/${res.data[0].client_id}/application`)
+              })
             })
           }} className="login-button">Submit</button>
 

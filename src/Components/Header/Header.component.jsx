@@ -11,6 +11,8 @@ const Header = (props) => {
         axios.get('/auth/me').then((res) => {
             if (res.data === "") {
                 props.history.push('/')
+            } else if (res.data.email === "admin@admin.com") {
+                props.history.push('/register')
             } else {
                 setName(res.data.name.toUpperCase())
                 props.getUser(res.data)
@@ -29,6 +31,9 @@ const Header = (props) => {
                 </Link>
                 <Link style={{ textDecorationLine: 'none', color: "white" }} to={props.linkRight}>
                     <p className="links-header">{props.right}</p>
+                </Link>
+                <Link style={{ textDecorationLine: 'none', color: "white" }} to={props.linkRightRight}>
+                    <p className="links-header">{props.RightRight}</p>
                 </Link>
                 {props.logout ? <div className="link-logout">
                     <p onClick={() => {

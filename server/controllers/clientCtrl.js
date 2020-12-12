@@ -38,6 +38,28 @@ module.exports = {
         const clients = await db.client.get_clients({ agentId })
 
         res.status(200).send(clients)
+    },
+    getAllClients: async (req, res) => {
+        const db = req.app.get('db')
+
+        const list = await db.client.get_clientsAll()
+
+        res.status(200).send(list)
+    },
+    orderByAlphabet: async (req, res) => {
+        const db = req.app.get('db')
+        const { agent_id } = req.params
+
+        const list = await db.client.order_by_a({ agent_id })
+
+        res.status(200).send(list)
+    }, orderById: async (req, res) => {
+        const db = req.app.get('db')
+        const { agent_id } = req.params
+
+        const list = await db.client.order_by_id({ agent_id })
+
+        res.status(200).send(list)
     }
 
 }

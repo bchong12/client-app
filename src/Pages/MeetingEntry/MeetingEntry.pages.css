@@ -58,7 +58,7 @@
   background-size: cover;
 }
 .meeting-input-box {
-  background-color: grey;
+  background-color: rgba(5, 33, 128, 0.582);
   width: 80vw;
   padding-left: 9vw;
 }

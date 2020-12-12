@@ -16,7 +16,7 @@ const Login = (props) => {
         props.history.push('/dashboard')
       }
     })
-  })
+  }, [])
   return (
     <div className="login">
       <div className="input-box">

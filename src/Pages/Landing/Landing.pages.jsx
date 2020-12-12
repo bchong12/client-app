@@ -1,8 +1,16 @@
 import React, { useEffect } from "react";
 import { withRouter } from "react-router-dom";
+import axios from 'axios'
 import "./Landing.pages.css";
 
 const Landing = (props) => {
+  useEffect(() => {
+    axios.get('/auth/me').then((res) => {
+      if (res.data.email) {
+        props.history.push('/dashboard')
+      }
+    })
+  }, [])
   return (
     <div className="landing-page">
       <img
@@ -16,14 +24,6 @@ const Landing = (props) => {
         className="landing-auth-button"
       >
         Login
-      </button>
-      <button
-        onClick={() => {
-          props.history.push("/register");
-        }}
-        className="landing-auth-button-r"
-      >
-        Register
       </button>
     </div>
   );

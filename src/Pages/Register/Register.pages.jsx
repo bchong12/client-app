@@ -16,11 +16,11 @@ const Register = (props) => {
 
   useEffect(() => {
     axios.get('/auth/me').then((res) => {
-      if (res.data !== "") {
-        props.history.push('/dashboard')
+      if (res.data.email !== "admin@admin.com") {
+        props.history.push('/')
       }
     })
-  })
+  }, [])
 
   return (
     <div className="register">
@@ -72,7 +72,12 @@ const Register = (props) => {
           }
         }} className="login-button">Submit</button>
 
-        <a href="/login" className="link-form">Already have an account?</a>
+        <button onClick={() => {
+          //axios req
+          axios.post('/auth/logout').then(() => {
+            props.history.push('/')
+          })
+        }} className="login-button">Logout</button>
       </div>
     </div>
   );

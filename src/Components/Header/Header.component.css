@@ -35,7 +35,8 @@
   }
 
   .link-logout {
-    margin-left: -40px;
+    margin-left: -72px;
+    margin-right: 30px;
   }
 
   .link-logout:hover {

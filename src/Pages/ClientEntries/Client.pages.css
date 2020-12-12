@@ -33,6 +33,19 @@
   scrollbar-color: transparent transparent;
   margin-top: -30px;
 }
+.client-entries-box-1 {
+  height: 75vh;
+  width: 70vw;
+  background-color: grey;
+  border-radius: 10px;
+  display: flex;
+  scrollbar-color: transparent transparent;
+  align-items: center;
+  padding: 20px;
+  flex-direction: column;
+  overflow: auto;
+  z-index: 4;
+}
 ::-webkit-scrollbar {
   width: 0px; /* Remove scrollbar space */
   background: transparent; /* Optional: just make scrollbar invisible */
@@ -53,6 +66,24 @@
   padding-bottom: 5px;
   width: 130px;
 }
+.client-one-1 {
+  margin-right: 10px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  color: rgb(241, 241, 241);
+  border-radius: 10px;
+  margin-bottom: 15px;
+  background-color: rgb(80, 80, 80);
+  width: 80%;
+  padding: 10px 40px;
+  padding-right: 60px;
+  z-index: 4;
+}
+.client-one-1:hover {
+  cursor: pointer;
+  background-color: rgb(119, 119, 119);
+}
 .client-one:hover {
   cursor: pointer;
   background-color: rgb(119, 119, 119);
@@ -70,4 +101,41 @@
 .margins-bottom {
   margin-bottom: 50px;
   margin-top: 10px;
+}
+
+.z-index {
+  z-index: 5;
+}
+
+.delete-button:hover {
+  cursor: pointer;
+}
+
+.client-name-entries {
+  font-size: 15px;
+  margin-left: 10px;
+  font-weight: 500;
+}
+
+.sorter {
+  margin-top: -30px;
+  margin-bottom: 30px;
+}
+
+.margins-tops {
+  margin-top: 30px;
+  border: 1px solid;
+}
+
+.sort-button {
+  padding: 10px;
+  border: 0px;
+  border-radius: 8px;
+  background-color: rgb(201, 201, 201);
+  margin-left: 10px;
+  margin-right: 10px;
+}
+.sort-button:hover {
+  cursor: pointer;
+  background-color: rgb(161, 161, 161);
 }

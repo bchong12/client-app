@@ -212,7 +212,7 @@ const InsuranceUpdate = (props) => {
 
   return (
     <>
-      <Header left="agent name" middle="Applications" right="Client" linkMiddle={`/client/${clientId}/application`} linkRight={`/client/${clientId}`} />
+      <Header left="agent name" right="Forms Page" linkRight={`/client/${clientId}/application`} />
       <div className="insurance-entry">
         <div className="insurance-input-box">
           <p className="login-title">Client Data Form</p>
@@ -1049,7 +1049,7 @@ const InsuranceUpdate = (props) => {
                 }).then(() => {
                   props.history.push(`/client/${clientId}/application`)
                 })
-              }} className="mls thick login-button">Submit</button>
+              }} className="mls thick login-button">Save</button>
               <button onClick={() => {
                 axios.post('/application/email', {
                   name: insuredName,

@@ -20,7 +20,7 @@ const MeetingUpdate = (props) => {
 
   return (
     <>
-      <Header left="agent name" middle="Meetings" right="Client" linkMiddle={`/client/${props.match.params.id}/meeting`} linkRight={`/client/${props.match.params.id}`} />
+      <Header left="agent name" right="Forms Page" linkRight={`/client/${props.match.params.id}/application`} />
       <div className="meeting-entry">
         <div className="meeting-input-box">
           <p className="margins-top form-title">Meeting Notes</p>
@@ -51,13 +51,13 @@ const MeetingUpdate = (props) => {
           <div className="margins-top margin-right">
             <button onClick={() => {
               axios.put('/meeting', { meeting_id: props.match.params.meetingId, name, date, notes }).then(() => {
-                props.history.push(`/client/${props.match.params.id}/meeting`)
+                props.history.push(`/client/${props.match.params.id}/application`)
               })
-            }} className="mls thick login-button">Submit</button>
+            }} className="mls thick login-button">Save</button>
             <button onClick={() => {
               axios.post('/meeting/email', { name, date, notes, email: props.auth.user.email })
               axios.put('/meeting', { meeting_id: props.match.params.meetingId, name, date, notes }).then(() => {
-                props.history.push(`/client/${props.match.params.id}/meeting`)
+                props.history.push(`/client/${props.match.params.id}/application`)
               })
             }} className="mls thick login-button">Email</button>
             <button onClick={() => {
@@ -66,7 +66,7 @@ const MeetingUpdate = (props) => {
                 method: 'delete',
                 data: { meeting_id: props.match.params.meetingId }
               }).then(() => {
-                props.history.push(`/client/${props.match.params.id}/meeting`)
+                props.history.push(`/client/${props.match.params.id}/application`)
               })
             }} className="mls thick login-button">Delete</button>
           </div>

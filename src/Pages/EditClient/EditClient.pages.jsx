@@ -21,7 +21,7 @@ const EditClient = (props) => {
     }, [])
     return (
         <>
-            <Header left="agent name" middle="Dashboard" right="Client" linkMiddle="/dashboard" linkRight={`/client/${clientId}`} />
+            <Header left="agent name" middle="Dashboard" right="Forms Page" linkMiddle="/dashboard" linkRight={`/client/${clientId}/application`} />
             <div className="edit-agent">
                 <div className="client-entry">
                     <div className="editClient input-box">
