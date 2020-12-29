@@ -1,65 +1,70 @@
 module.exports = {
-    addClient: (req, res) => {
-        const db = req.app.get('db')
-        const { name, email, phoneNumber, agentId } = req.body
+  addClient: async (req, res) => {
+    const db = req.app.get("db");
+    const { name, email, phoneNumber, agentId } = req.body;
 
-        db.client.add_client({ name, email, phoneNumber, agentId })
+    const client = await db.client.add_client({
+      name,
+      email,
+      phoneNumber,
+      agentId,
+    });
 
-        res.sendStatus(200)
-    },
-    deleteClient: (req, res) => {
-        const db = req.app.get('db')
-        const { clientId } = req.body
+    res.status(200).send(client[0]);
+  },
+  deleteClient: (req, res) => {
+    const db = req.app.get("db");
+    const { clientId } = req.body;
 
-        db.client.delete_client({ clientId })
+    db.client.delete_client({ clientId });
 
-        res.sendStatus(200)
-    },
-    updateClient: (req, res) => {
-        const db = req.app.get('db')
-        const { name, email, phoneNumber, clientId } = req.body
+    res.sendStatus(200);
+  },
+  updateClient: (req, res) => {
+    const db = req.app.get("db");
+    const { name, email, phoneNumber, clientId } = req.body;
 
-        db.client.update_client({ name, email, phoneNumber, clientId })
+    db.client.update_client({ name, email, phoneNumber, clientId });
 
-        res.sendStatus(200)
-    },
-    getClient: async (req, res) => {
-        const db = req.app.get('db')
-        const { clientId } = req.params
+    res.sendStatus(200);
+  },
+  getClient: async (req, res) => {
+    const db = req.app.get("db");
+    const { clientId } = req.params;
 
-        const client = await db.client.get_client({ clientId })
+    const client = await db.client.get_client({ clientId });
 
-        res.status(200).send(client)
-    },
-    getClients: async (req, res) => {
-        const db = req.app.get('db')
-        const { agentId } = req.params
+    res.status(200).send(client);
+  },
+  getClients: async (req, res) => {
+    const db = req.app.get("db");
+    const { agentId } = req.params;
 
-        const clients = await db.client.get_clients({ agentId })
+    const clients = await db.client.get_clients({ agentId });
 
-        res.status(200).send(clients)
-    },
-    getAllClients: async (req, res) => {
-        const db = req.app.get('db')
+    res.status(200).send(clients);
+  },
+  getAllClients: async (req, res) => {
+    const db = req.app.get("db");
 
-        const list = await db.client.get_clientsAll()
+    const list = await db.client.get_clientsAll();
 
-        res.status(200).send(list)
-    },
-    orderByAlphabet: async (req, res) => {
-        const db = req.app.get('db')
-        const { agent_id } = req.params
+    res.status(200).send(list);
+  },
+  orderByAlphabet: async (req, res) => {
+    const db = req.app.get("db");
+    const { agent_id } = req.params;
 
-        const list = await db.client.order_by_a({ agent_id })
+    const list = await db.client.order_by_a({ agent_id });
 
-        res.status(200).send(list)
-    }, orderById: async (req, res) => {
-        const db = req.app.get('db')
-        const { agent_id } = req.params
+    res.status(200).send(list);
+  },
+  orderById: async (req, res) => {
+    const db = req.app.get("db");
+    const { agent_id } = req.params;
 
-        const list = await db.client.order_by_id({ agent_id })
+    const list = await db.client.order_by_id({ agent_id });
 
-        res.status(200).send(list)
-    }
-
-}
+    res.status(200).send(list);
+  },
+};
