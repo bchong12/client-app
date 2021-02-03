@@ -86,6 +86,8 @@ module.exports = {
             });
 
         })
+        let fontpath = __dirname + "/NanumGothic-Regular.ttf"
+        doc.font(fontpath)
         doc
             .fontSize(30)
             .text('Meeting Notes', {
@@ -93,15 +95,19 @@ module.exports = {
             });
         doc
             .fontSize(15)
+            .font("NanumGothic")
             .text(`Name: ${name}`, 60, 135)
         doc
             .fontSize(15)
+            .font("NanumGothic")
             .text(`Date: ${date}`, 60, 175)
         doc
             .fontSize(15)
+            .font("NanumGothic")
             .text('Notes', 60, 215)
         doc
             .fontSize(13)
+            .font("NanumGothic")
             .text(`${notes}`, 60, 255, {
                 lineGap: 8
             })
